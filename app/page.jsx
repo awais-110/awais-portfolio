@@ -58,7 +58,7 @@ export default function Home() {
       })
 
       if (res.ok) {
-        setFormMsg('✓ Message sent! I'll reply soon.')
+        setFormMsg("✓ Message sent! I'll reply soon.")
         form.reset()
         setTimeout(() => setFormMsg(''), 4000)
       } else {
