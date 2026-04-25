@@ -112,6 +112,8 @@
   padding: 0.4rem 0.9rem;
   border-radius: 3px;
   font-size: 0.75rem !important;
+  
+  order: -1; 
 }
 
 .nav-right {
