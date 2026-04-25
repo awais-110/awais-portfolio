@@ -84,7 +84,6 @@ export default function Home() {
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="#hire" className="hire-btn">Hire Me</a></li>
           <li><a href="https://linkedin.com/in/muhammad-awais-0287743a9" target="_blank" className="linkedin-btn">🔗 LinkedIn</a></li>
         </ul>
         <div className="nav-right">
