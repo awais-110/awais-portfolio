@@ -2,6 +2,13 @@ import { Resend } from 'resend'
 
 export async function POST(request) {
   try {
+    if (!process.env.RESEND_API_KEY) {
+      return Response.json(
+        { error: 'Missing RESEND_API_KEY environment variable' },
+        { status: 500 }
+      )
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY)
     
     const { name, email, subject, message } = await request.json()
@@ -14,7 +21,7 @@ export async function POST(request) {
     }
 
     const result = await resend.emails.send({
-      from: 'noreply@resend.dev',
+      from: 'onboarding@resend.dev',
       to: 'awaiss.dev@gmail.com',
       replyTo: email,
       subject: subject || 'Portfolio Contact',
@@ -28,15 +35,9 @@ export async function POST(request) {
       `,
     })
 
-    if (result.error) {
-      return Response.json(
-        { error: result.error.message },
-        { status: 500 }
-      )
-    }
-
     return Response.json({ success: true, id: result.data.id })
   } catch (error) {
+    console.error('Email error:', error)
     return Response.json(
       { error: error.message },
       { status: 500 }
